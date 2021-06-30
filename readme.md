@@ -19,6 +19,7 @@ directive:
 ```
 
 ### Output
+```
 PS D:\Martin\autorest-customization> autorest .\readme.md
 AutoRest code generation utility [cli version: 3.2.3; node: v12.18.3, max-memory: 2048 MB] (C) 2018 Microsoft Corporation. https://aka.ms/autorest                                                                                                                                                 
 NOTE: AutoRest core version selected from configuration: ~3.1.0.
@@ -28,3 +29,4 @@ WARNING (PreCheck/CheckDuplicateSchemas): Checking for duplicate schemas, this c
 WARNING (Interpretations): Generating 'operationId' to 'Core' for 'get' operation on path '/Core/MessageBase' 
 WARNING: output-folder path should be an absolute path
 [6.59 s] Generation Complete
+```
