@@ -1,0 +1,103 @@
+openapi: 3.0.1
+info:
+  title: Core module
+  version: 1.0.0
+paths:
+  /Core/MessageBase:
+    get:
+      tags:
+        - Core
+      summary: "Get message base"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageBase"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageBase"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageBase"
+components:
+  schemas:
+    MessageBase:
+      type: object
+      properties:
+        MerchantId:
+          type: integer
+          description: Merchant id.
+          format: int32
+          nullable: false
+        Targets:
+          $ref: "#/components/schemas/MessageTargets"
+        AuthToken:
+          type: string
+          description: "Token used in request, which generates the event."
+          nullable: true
+        Published:
+          type: string
+          description: Date time when the event was published.
+          format: date-time
+          nullable: true
+        MessageId:
+          type: string
+          description: Message id for better identification.
+          nullable: true
+
+      description: Class of base event message properties.
+    MessageTargets:
+      type: object
+      properties:
+        Locations:
+          type: array
+          items:
+            type: integer
+            format: int32
+            nullable: false
+          description: List of message target locations.
+          nullable: true
+    CashLocationBase:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Id of the cash location.
+          format: int32
+          nullable: false
+        Name:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: Name of the cash location.
+          nullable: true
+        Location:
+          $ref: "#/components/schemas/CompanyBase"
+    CompanyBase:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Identification number in the internal system.
+          format: int32
+          nullable: false
+        Name:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: Name of a company.
+          nullable: true
+        IdentificationNumber:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: Identification number from the business register.
+          nullable: true
